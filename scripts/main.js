@@ -2,30 +2,26 @@ $(() => {
 
   //set up variables in j-query
   // eg. const $button = $('#toggle')
-
-  const $playerDice1 = $('.playerdice1')
-  const $playerTwoDice1 = $('.playertwodice1')
-  const $playerDice2 = $('.playerdice2')
-  const $playerTwoDice2 = $('.playertwodice2')
-  const snakeTail1 = $('#7')
-  const snakeTail2 = $('#11')
-  const ladderTop1 = $('#8')
-  const ladderTop2 = $('#22')
-
-  // const $playerIcon =$('.playerIcon')
-  // const $computerIcon =$('.computericon')
-
   const $gameGrid = $('.gamegrid')
+  let $grid = []
+  const gridNumbers = 24
   let playerOnePosition = 0
   let playerTwoPosition = 0
   const $currentPlayerPosition = $('.currentPlayerPosition')
   const $currentPlayerTwoPosition = $('.currentPlayerTwoPosition')
+  const $playerDice1 = $('.playerdice1')
+  const $playerDice2 = $('.playerdice2')
+  const $playerTwoDice1 = $('.playertwodice1')
+  const $playerTwoDice2 = $('.playertwodice2')
 
-  // const $stop = $('.stop')
 
-  //  create grid in jquery append to html
-  let $grid = []
-  const gridNumbers = 24
+  // function startPlay()
+  // const $playerIcon =$('.playerIcon') at zero
+  // const $computerIcon =$('.computericon') at zero
+  // both icons at zero (is this possible?)
+  // winner if icons greater or equal to 26
+
+  //create grid in jquery append to html
   function createGameboard() {
     for (let i = 0; i <= gridNumbers; i++){
       if(i === 0) {
@@ -33,21 +29,21 @@ $(() => {
       } else if(i === 1) {
         $gameGrid.append(`<div id="${i}" class="box playertwo"></div>`)
       }else if(i === 14) {
-        $gameGrid.append(`<div id="${i}" class="box snake" data-id="7"></div>`)
+        $gameGrid.append(`<div id="${i}" class="box snakehead1" data-id="14"></div>`)
       } else if(i === 23) {
-        $gameGrid.append(`<div id="${i}" class="box snake" data-id="11"></div>`)
+        $gameGrid.append(`<div id="${i}" class="box snakehead2" data-id="23"></div>`)
       } else if(i === 7) {
-        $gameGrid.append(`<div id="${i}" class="box snaketail"</div>`)
+        $gameGrid.append(`<div id="${i}" class="box snaketail1 data-id="7"</div>`)
       } else if(i ===11) {
-        $gameGrid.append(`<div id="${i}" class="box snaketail"</div>`)
+        $gameGrid.append(`<div id="${i}" class="box snaketail2 data-id="11"</div>`)
       } else if(i === 2) {
-        $gameGrid.append(`<div id="${i}" class="box ladder" data-id="8"></div>`)
+        $gameGrid.append(`<div id="${i}" class="box ladderbottom1" data-id="2"></div>`)
       } else if(i === 10) {
-        $gameGrid.append(`<div id="${i}" class="box ladder" data-id="22"></div>`)
+        $gameGrid.append(`<div id="${i}" class="box ladderbottom2" data-id="10"></div>`)
       } else if(i === 8) {
-        $gameGrid.append(`<div id="${i}" class="box laddertop data-id="8"></div>`)
+        $gameGrid.append(`<div id="${i}" class="box laddertop1 data-id="8"></div>`)
       } else if(i === 22) {
-        $gameGrid.append(`<div id="${i}" class="box laddertop"></div>`)
+        $gameGrid.append(`<div id="${i}" class="box laddertop2 data-id="8""></div>`)
       } else {
         $gameGrid.append(`<div id="${i}" class="box">${i}</div>`)
       }
@@ -62,81 +58,81 @@ $(() => {
 
   // connect dice to click and players
   $playerDice1.on('click', function() {
-    console.log(`player 1 position = ${playerOnePosition}`)
-    $playerDice2.html(rollDice)
     const amountToMove = rollDice()
+    // console.log('this is rollDice', rollDice())
+    $playerDice2.html(amountToMove)
     const $currentPlayerPosition = $gameGrid.find('.player')
+    console.log('player1 dice rolled', amountToMove)
+    console.log('this is currentPlayerPosition', $currentPlayerPosition)
     playerOnePosition = parseInt($currentPlayerPosition[0].id)
-    $currentPlayerPosition.removeClass('player')
-    $($grid).eq(amountToMove + playerOnePosition).addClass('player')
+    // $currentPlayerPosition.removeClass('player')
     playerOnePosition = amountToMove + playerOnePosition
-    console.log(`new player 1 position = ${playerOnePosition}`)
-    // $('.uiux').attr('id', 'hidden')
-  })
 
+    if (playerOnePosition === 14) {
+      console.log(`player1 hit snakehead1 = ${playerOnePosition}`)
+      playerOnePosition = 7
+    }
+
+    if (playerOnePosition === 23) {
+      console.log(`player1 hit snakehead2 = ${playerOnePosition}`)
+      playerOnePosition = 11
+    }
+
+    if (playerOnePosition === 2) {
+      console.log(`player1 at ladderbottom1 = ${playerOnePosition}`)
+      playerOnePosition = 8
+
+    }
+    if (playerOnePosition === 10) {
+      console.log(`player at ladderbottom2 = ${playerOnePosition}`)
+      playerOnePosition = 22
+    }
+
+    $currentPlayerPosition.removeClass('player')
+    $($grid).eq(playerOnePosition).addClass('player')
+
+  })
 
   $playerTwoDice1.on('click', function() {
-    console.log(`player 2 position = ${playerTwoPosition}`)
-    $playerTwoDice2.html(rollDice)
     const amountToMove = rollDice()
+    $playerTwoDice2.html(amountToMove)
+    console.log('player2 dice rolled ', amountToMove)
     const $currentPlayerTwoPosition = $gameGrid.find('.playertwo')
     playerTwoPosition = parseInt($currentPlayerTwoPosition[0].id)
-    $currentPlayerTwoPosition.removeClass('playertwo')
-    $($grid).eq(amountToMove + playerTwoPosition).addClass('playertwo')
     playerTwoPosition = amountToMove + playerTwoPosition
-    console.log(`new player 2 position = ${playerTwoPosition}`)
-    if (playerTwoPosition === 7) {
-      alert('hit 7')
-      playerTwoPosition = 2
-      console.log(`player hit a snake = ${playerTwoPosition}`)
+
+    if(playerTwoPosition === 14) {
+      console.log(`player2 hit a snakehead1 = ${playerTwoPosition}`)
+      playerTwoPosition = 7
     }
-    if (playerTwoPosition === 14) {
-      alert('hit 14')
+
+    if (playerTwoPosition === 23) {
+      console.log(`player2 hit snakehead2 = ${playerTwoPosition}`)
+      playerTwoPosition = 11
     }
-    if (playerTwoPosition === 8) {
-      alert('hit 8')
+
+    if (playerTwoPosition === 2) {
+      console.log(`player2 at ladderbottom1 = ${playerTwoPosition}`)
+      playerTwoPosition = 8
     }
-    if (playerTwoPosition === 22) {
-      alert('hit 22')
+
+    if (playerTwoPosition === 10) {
+      console.log(`player2 cat ladderbottom2 = ${playerTwoPosition}`)
+      playerTwoPosition = 22
     }
+
+    $currentPlayerTwoPosition.removeClass('playertwo')
+    $($grid).eq(playerTwoPosition).addClass('playertwo')
+
   })
 
+  // function declareWinner($currentPlayerPosition, $currentPlayerTwoPosition){
+  //   if ($currentPlayerPosition >= 26) {
+  //     alert('Player 1 wins, play again?')
+  //   } else ($currentPlayerTwoPosition >= 26)
+  //   alert('Player 2 wins, play again?')
+  // }
+  //
+  // declareWinner()
 
-  // snake and ladder exceptions
-  function movePosition(currentPosition, newPosition){
-    // const amountToMove = rollDice()
-    const $currentPlayerPosition = $gameGrid.find('.player')
-    const $currentPlayerTwoPosition = $gameGrid.find('.playertwo')
-
-    if ($currentPlayerPosition || $currentPlayerTwoPosition === 2){
-      newPosition === ladderTop1
-      console.log(`new position = ${newPosition}`)
-      console.log(`ladderTop1 = ${ladderTop1[0]}`)
-      console.log(`ladderTop2 = ${ladderTop2[0]}`)
-      console.log(`snakeTail1 = ${snakeTail1[0]}`)
-      console.log(`snakeTail2 = ${snakeTail2[0]}`)
-    } else if ($currentPlayerPosition || $currentPlayerTwoPosition === 10){
-      newPosition === ladderTop2
-    } else if ($currentPlayerPosition || $currentPlayerTwoPosition === 23){
-      newPosition === snakeTail2
-    } else if ($currentPlayerPosition || $currentPlayerTwoPosition === 14){
-      newPosition === snakeTail1
-    } else {
-      $currentPlayerPosition || $currentPlayerTwoPosition === amountToMove
-    }
-  }
-  movePosition(playerOnePosition, playerTwoPosition)
 })
-
-// declare winner
-// function declareWinner(){
-//   const $currentPlayerPosition = $gameGrid.find('.player')
-//   if ($currentPlayerPosition >= 25) {
-//     alert('Player 1 is the winner')
-//   } else {
-//     alert('Player 2 is the winner')
-//   }
-// }
-// declareWinner()
-
-// reset board

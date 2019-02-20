@@ -98,28 +98,28 @@ strong{
   background-color: green;
 }
 
-.snake {
+.snakehead1, .snakehead2 {
   background-image: url(../Images/snake-1.jpg);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.snaketail {
+.snaketail1, .snaketail2 {
   background-image: url(../Images/snake-2.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.ladder {
+.laddertop1, .laddertop2 {
   background-image: url(../Images/ladder-1.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.laddertop {
+.ladderbottom1, .ladderbottom2 {
   background-image: url(../Images/ladder-2.png);
   background-size: contain;
   background-position: center;
