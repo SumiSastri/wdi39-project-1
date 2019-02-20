@@ -1,0 +1,176 @@
+Game acceptance criteria:-
+
+Game start:
+The game starts when the player initiates the play button
+The user plays against the computer
+
+The snake - use case
+If you land on a snake head you move to the tail
+
+The ladder - use case
+If you land on the bottom of a ladder you move to the top
+
+Player use case
+As a player I roll a dice and move from right to left
+If I reach the grid frame I move one grid up and reverse direction
+If I land at the bottom of the ladder I move to the top
+If I land on a snake I move to the bottom
+
+
+The dice - use case
+When clicked by player generates random number between 1-6
+When player move over randomly generates number for computer
+
+
+Game end:
+Terminates when either player reaches last square
+Or when stop and clear button pressed
+
+Static design requirements
+Grid with 56 numbered squares
+Square shaped board
+The last square is top right
+First square is bottom right
+Three snakes
+Three ladders
+Icons for players to select
+Dice with 6 numbers
+
+Copy requirements
+Name of game, game rules, button labels
+
+Image requirements
+Two snakes
+Two ladders
+Player Icons 2
+
+Bonus
+Scoreboard for 2 player scores
+
+Responsive design Requirements
+Design to fit 400/ 640 /960 (mobile, tablet, desktop)
+
+
+ui-ux
+Start - Stop
+dice produces random number
+icons move
+
+MVP:
+Grid of 16 with 2 snakes and 2 ladders
+user and computer can play the game
+One player wins
+
+FWM:
+100 grid with 10 snakes 10 ladders
+Bonus - more than 2 players
+Scoreboard
+
+HTML & css Requirements
+Grid with 56 numbered squares
+Four snakes
+Four ladders
+Icons for players to select
+Dice
+Scoreboard
+Buttons
+
+javascript & j-query
+
+// create grid in jquery append to html
+// function createGameGrid() {
+//   for (i = 0; i <= 56; i++) {
+//   return what? grid item??
+//  append to parent
+// $('$gamegrid').on('click', (e) => {
+//     $('.gamegrid').append(e.target)
+//   }
+// })
+
+// CHECK: this grid is an array of objects
+// each object is one grid element
+// do I need to make an array or not?
+// const gameboardArray = [i]  will this work?
+
+
+Cards and acceptance criteria
+
+1. Game start - game starts on roll of dice
+
+2. User rolls dice
+      - on click random number between 1 and 6
+      generated associated with user
+
+      // Math Random memory jogger - how to invoke review
+      // function rollDice(randomNumber BETWEEN 1 AND 6){
+      // Math.floor(Math.random() * 7);
+      // return random number invoked as rollDice()
+      // }
+
+
+3. Move icon (different states)
+   - start point zero
+   - on dice roll move left to right
+        - move to equal number on the dice
+   - if icon reaches end of frame reverse direction
+   - if icon reaches top of snake move to tail
+   - if icon reaches bottom of ladder move to the top
+   - if icon reaches last frame game over
+
+   // function iconMoves(){
+   // function myMove() {
+   // $playericon("animate");
+   // var pos = 0;
+   // var id = setInterval(frame, 5);
+   // function frame() {
+   //  if (pos == 350) {
+   //    clearInterval(id);
+   //  } else {
+   //    pos++;
+   //    elem.style.top = pos + 'px';
+   //    elem.style.left = pos + 'px';
+   //  }
+   // }
+   // }
+   //   OR?? var myVar = setInterval(setColor, 300);
+
+   //   function setColor() {
+   //   var x = document.body;
+   //   x.style.backgroundColor = x.style.backgroundColor == "yellow" ? "pink" : "yellow";
+   // }
+
+   //   function stopColor() {
+   //   clearInterval(myVar);
+   // }
+
+   // $playerIcon || $computer icon to (i++ rollDice())
+   // (direction agnostic?)
+   // do i need to filter? 3,4,11,12,19,20,27,28,35,36,43,44
+   // $playerIcon || $computer icon === $ladderbottom1 === $laddertop1
+   // $playerIcon || $computer icon === $snakehead1 === $snaketail1
+   // }
+
+
+   loop syntax memory jogger
+   // function () {
+   // for (i = 0; i < 5; i++) {
+   // x += i;
+   // }
+   // function doThis(to this){
+   // use the arguments perform an action
+   // and return the result so I can use it again
+   // }
+   // run function doThis many times over
+
+4. Repeat functions 2 and 3 for computer
+
+
+5. Game stops
+   -  icons return to start position
+   -  play button toggles back to start game
+
+6. Bonus - score board
+   -  score board displays user score computer score (bonus)
+   -  running score maintained (bonus)
+   -  Best of three tries declares winner (bonus)
+   -  Reset button to zero

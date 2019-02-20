@@ -1,0 +1,71 @@
+Game acceptance criteria:-
+
+Game start:
+The game starts when the player initiates the play button
+Both players are static and at 90 degree angles to each other
+
+The invaders - use cases
+As an invader my start position is at centre top of the screen
+I can move left to right till I hit the frame edge
+I move a level down in the reverse direction when I hit a frame edge
+I drop missiles at 90 degree angles at regular intervals
+I must disappear from the screen if I am shot
+I run in an infinite loop
+
+The player use cases
+As a player my start position is at centre bottom of the screen
+I can only move left or right
+I can only shoot the invader at a 90 degree angle
+
+Scoreboard functionality
+One point must be registered for every invader hit by a player
+A running total of the game must be displayed
+
+Game end:
+Runs in an infinite loop til reset(stop) button clicked
+Runs till one wave of invaders killed by player
+Or player is killed by invader
+Or if invader comes down the grid to player level
+Timer - set game to a time limit
+
+
+Static design requirements
+An invader
+A player
+Invader missiles
+Player missiles
+A scoreboard
+Buttons ( play game, player move left-right-or shoot, end game)
+Bunkers to protect player
+
+Responsive design Requirements
+Design to fit 400/ 640 /960 (mobile, tablet, desktop)
+
+Copy requirements
+Name of game, game rules, button labels
+
+Animation or Interactivity requirements
+Invaders move on click of play button
+Movement left to right
+Movement reversed if invader touches frame edge
+Invader disappears from screen when shot
+Player moves from right to left
+Player shot movement
+Player disappears when shot by missile
+Board clears back to start position
+Scoreboard total updates
+
+MVP:
+One line of space invaders
+All other functionality required for game performance
+Desktop working model
+
+FWM:
+Infinite loop of space Invaders
+Score invader hits vs player hits
+Highest score in a session
+Mobile first by design
+
+HTML Requirements
+css requirements
+javascript & j-query (or DOM requirements)
