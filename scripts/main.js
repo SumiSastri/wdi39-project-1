@@ -45,7 +45,7 @@ $(() => {
       } else if(i === 10) {
         $gameGrid.append(`<div id="${i}" class="box ladder" data-id="22"></div>`)
       } else if(i === 8) {
-        $gameGrid.append(`<div id="${i}" class="box laddertop"></div>`)
+        $gameGrid.append(`<div id="${i}" class="box laddertop data-id="8"></div>`)
       } else if(i === 22) {
         $gameGrid.append(`<div id="${i}" class="box laddertop"></div>`)
       } else {
@@ -62,32 +62,59 @@ $(() => {
 
   // connect dice to click and players
   $playerDice1.on('click', function() {
+    console.log(`player 1 position = ${playerOnePosition}`)
     $playerDice2.html(rollDice)
     const amountToMove = rollDice()
     const $currentPlayerPosition = $gameGrid.find('.player')
     playerOnePosition = parseInt($currentPlayerPosition[0].id)
     $currentPlayerPosition.removeClass('player')
     $($grid).eq(amountToMove + playerOnePosition).addClass('player')
+    playerOnePosition = amountToMove + playerOnePosition
+    console.log(`new player 1 position = ${playerOnePosition}`)
+    // $('.uiux').attr('id', 'hidden')
   })
 
 
   $playerTwoDice1.on('click', function() {
+    console.log(`player 2 position = ${playerTwoPosition}`)
     $playerTwoDice2.html(rollDice)
     const amountToMove = rollDice()
     const $currentPlayerTwoPosition = $gameGrid.find('.playertwo')
     playerTwoPosition = parseInt($currentPlayerTwoPosition[0].id)
     $currentPlayerTwoPosition.removeClass('playertwo')
     $($grid).eq(amountToMove + playerTwoPosition).addClass('playertwo')
+    playerTwoPosition = amountToMove + playerTwoPosition
+    console.log(`new player 2 position = ${playerTwoPosition}`)
+    if (playerTwoPosition === 7) {
+      alert('hit 7')
+      playerTwoPosition = 2
+      console.log(`player hit a snake = ${playerTwoPosition}`)
+    }
+    if (playerTwoPosition === 14) {
+      alert('hit 14')
+    }
+    if (playerTwoPosition === 8) {
+      alert('hit 8')
+    }
+    if (playerTwoPosition === 22) {
+      alert('hit 22')
+    }
   })
 
 
   // snake and ladder exceptions
   function movePosition(currentPosition, newPosition){
-    const amountToMove = rollDice()
+    // const amountToMove = rollDice()
     const $currentPlayerPosition = $gameGrid.find('.player')
     const $currentPlayerTwoPosition = $gameGrid.find('.playertwo')
+
     if ($currentPlayerPosition || $currentPlayerTwoPosition === 2){
       newPosition === ladderTop1
+      console.log(`new position = ${newPosition}`)
+      console.log(`ladderTop1 = ${ladderTop1[0]}`)
+      console.log(`ladderTop2 = ${ladderTop2[0]}`)
+      console.log(`snakeTail1 = ${snakeTail1[0]}`)
+      console.log(`snakeTail2 = ${snakeTail2[0]}`)
     } else if ($currentPlayerPosition || $currentPlayerTwoPosition === 10){
       newPosition === ladderTop2
     } else if ($currentPlayerPosition || $currentPlayerTwoPosition === 23){
@@ -98,7 +125,7 @@ $(() => {
       $currentPlayerPosition || $currentPlayerTwoPosition === amountToMove
     }
   }
-  movePosition()
+  movePosition(playerOnePosition, playerTwoPosition)
 })
 
 // declare winner
@@ -111,4 +138,5 @@ $(() => {
 //   }
 // }
 // declareWinner()
+
 // reset board

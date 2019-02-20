@@ -37,6 +37,13 @@ header{
   height: 15px;
 }
 
+.playerButton {
+  background-color: red;
+}
+#hidden {
+  /* visibility: hidden; */
+  background-color: black;
+}
 h1{
   background: red;
   text-align: center;
