@@ -11,10 +11,11 @@ The ladder - use case
 If you land on the bottom of a ladder you move to the top
 
 Player use case
-As a player I roll a dice and move from right to left
-If I reach the grid frame I move one grid up and reverse direction
+As a player I roll a dice to initiate the game
+I move from my original position in increments of the dice roll
 If I land at the bottom of the ladder I move to the top
 If I land on a snake I move to the bottom
+I should continue the game from the new position (either top of the ladder or bottom of the snake)
 
 
 The dice - use case
@@ -26,14 +27,14 @@ Game end:
 Terminates when either player reaches last square
 Or when stop and clear button pressed
 
-Static design requirements
-Grid with 56 numbered squares
+Static design requirements (MVP)
+Grid with 25 numbered squares
 Square shaped board
 The last square is top right
 First square is bottom right
-Three snakes
-Three ladders
-Icons for players to select
+Two snakes
+Two ladders
+Icons (tokens) for players to select
 Dice with 6 numbers
 
 Copy requirements
@@ -55,114 +56,98 @@ ui-ux
 Start - Stop
 dice produces random number
 icons move
+players move through squares to the dice roll
+players move from snake head to snake tail
+players move from ladder bottom to ladder top
 
-MVP:
-Grid of 16 with 2 snakes and 2 ladders
-user and computer can play the game
-One player wins
 
 FWM:
 100 grid with 10 snakes 10 ladders
 Bonus - more than 2 players
 Scoreboard
 
-HTML & css Requirements
-Grid with 56 numbered squares
-Four snakes
-Four ladders
-Icons for players to select
-Dice
-Scoreboard
-Buttons
+TECH SPEC
 
-javascript & j-query
+HTML build
 
-// create grid in jquery append to html
-// function createGameGrid() {
-//   for (i = 0; i <= 56; i++) {
-//   return what? grid item??
-//  append to parent
-// $('$gamegrid').on('click', (e) => {
-//     $('.gamegrid').append(e.target)
-//   }
-// })
+- HEADER WITH GAME NAME AND INFORMATION
+- INTRODUCTION WITH GAME RULES
+- UI-UX DIV WITH PLAYER DICE AND GAME INITIALIZATION
 
-// CHECK: this grid is an array of objects
-// each object is one grid element
-// do I need to make an array or not?
-// const gameboardArray = [i]  will this work?
+CSS STYLING
+
+- IDENTIFY BOTH PLAYER ICONS
+- IDENTIFY GAME GRID
+- IDENTIFY SNAKE HEADS AND TAILS
+- IDENTIFY LADDER TOPS AND BOTTOMS
+
+CSS ANIMATION
+
+- PLAYER ICONS MOVING
 
 
-Cards and acceptance criteria
+javascript & j-query (APPROACH
 
-1. Game start - game starts on roll of dice
 
-2. User rolls dice
-      - on click random number between 1 and 6
-      generated associated with user
+1. Build game grid in j-query not HTML - this makes each div an object, defines
+zero as the starting point for the players and defines the exceptions
 
-      // Math Random memory jogger - how to invoke review
-      // function rollDice(randomNumber BETWEEN 1 AND 6){
-      // Math.floor(Math.random() * 7);
-      // return random number invoked as rollDice()
-      // }
+Code snippet:-
+
+  const $gameGrid = $('.gamegrid')
+  let $grid = []
+  const gridNumbers = 24
+  let playerOnePosition = 0
+  let playerTwoPosition = 0
+
+  function createGameboard() {
+    for (let i = 0; i <= gridNumbers; i++){
+      if(i === 0) {
+        $gameGrid.append(`<div id="${i}" class="box player playerTwo"></div>`)
+      } else if(i === 1) {
+        $gameGrid.append(`<div id="${i}" class="box" data-id="1"></div>`)
+      }else if(i === 14) {
+      $gameGrid.append(`<div id="${i}" class="box snakehead1" data-id="14"></div>`)
+
+
+
+2. Players roll dice - generate a random number between 1 and 6 and current player position identified as relative to start position on the array
+      
+
+Code snippet:-
+
+function rollDice(){
+    return Math.ceil(Math.random() * 6)
+  }
+
+
+   $playerDice1.on('click', function() {
+   const amountToMove = rollDice()
+    $playerDice2.html(amountToMove)
+    const $currentPlayerPosition = $gameGrid.find('.player')
+    playerOnePosition = parseInt($currentPlayerPosition[0].id)
+    playerOnePosition = amountToMove + playerOnePosition
+
 
 
 3. Move icon (different states)
-   - start point zero
-   - on dice roll move left to right
-        - move to equal number on the dice
-   - if icon reaches end of frame reverse direction
-   - if icon reaches top of snake move to tail
-   - if icon reaches bottom of ladder move to the top
-   - if icon reaches last frame game over
 
-   // function iconMoves(){
-   // function myMove() {
-   // $playericon("animate");
-   // var pos = 0;
-   // var id = setInterval(frame, 5);
-   // function frame() {
-   //  if (pos == 350) {
-   //    clearInterval(id);
-   //  } else {
-   //    pos++;
-   //    elem.style.top = pos + 'px';
-   //    elem.style.left = pos + 'px';
-   //  }
-   // }
-   // }
-   //   OR?? var myVar = setInterval(setColor, 300);
+While the dice roll identifies the current position relative to starting point, the exceptions are identified by a conditional - here is a simple if statement, possibly an if else, or switch statement would work as well
 
-   //   function setColor() {
-   //   var x = document.body;
-   //   x.style.backgroundColor = x.style.backgroundColor == "yellow" ? "pink" : "yellow";
-   // }
+Code snippet:-
 
-   //   function stopColor() {
-   //   clearInterval(myVar);
-   // }
+if (playerOnePosition === 14) {
+      console.log(`player1 hit snakehead1 = ${playerOnePosition}`)
+      playerOnePosition = 7
+    }
 
-   // $playerIcon || $computer icon to (i++ rollDice())
-   // (direction agnostic?)
-   // do i need to filter? 3,4,11,12,19,20,27,28,35,36,43,44
-   // $playerIcon || $computer icon === $ladderbottom1 === $laddertop1
-   // $playerIcon || $computer icon === $snakehead1 === $snaketail1
-   // }
+    if (playerOnePosition === 23) {
+      console.log(`player1 hit snakehead2 = ${playerOnePosition}`)
+      playerOnePosition = 11
+    }
 
 
-   loop syntax memory jogger
-   // function () {
-   // for (i = 0; i < 5; i++) {
-   // x += i;
-   // }
-   // function doThis(to this){
-   // use the arguments perform an action
-   // and return the result so I can use it again
-   // }
-   // run function doThis many times over
-
-4. Repeat functions 2 and 3 for computer
+As this was the main funcitonality, the console logs are documented to show how the exception handling was tested
 
 
 5. Game stops
@@ -174,3 +159,29 @@ Cards and acceptance criteria
    -  running score maintained (bonus)
    -  Best of three tries declares winner (bonus)
    -  Reset button to zero
+
+
+LEARNING OBJECTIVES AND CHALLENGES:
+
+Key objectives were to go through all of module 1, learning at GA and understand the key principles. 
+
+Areas that were researched were:-
+
+1) CSS animation
+2) j-query documentation
+3) Data types - primitives, vs objects and constructors
+
+
+Challenges:-
+
+1) Understanding the difference between CSS animation and j-query animation
+2) Understanding higher order functions and which methods were useful to the game
+3) Overthinking and underthinking the challenge
+4) Using the console log as a guide without fear of breaking code that worked
+
+
+Areas that need more work:
+
+1) Would be useful to scale up the model from MVP to FWM
+2) Increase number of players using a constructor
+3) Create a better ui-ux game initalization and game termination section

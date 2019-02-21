@@ -92,10 +92,18 @@ strong{
 
 .player {
   background-color: red;
+  transition-property: background;
+  transition-duration: 0.9s;
+  transition-timing-function: linear;
+  transition-delay: 0.9s;
 }
 
 .playerTwo {
   background-color: green;
+  transition-property: background;
+  transition-duration: 0.9s;
+  transition-timing-function: linear;
+  transition-delay: 0.9s;
 }
 
 .playerTwo.player {

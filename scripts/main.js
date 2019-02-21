@@ -2,6 +2,7 @@ $(() => {
 
   //set up variables in j-query
   // eg. const $button = $('#toggle')
+
   const $gameGrid = $('.gamegrid')
   let $grid = []
   const gridNumbers = 24
@@ -59,6 +60,7 @@ $(() => {
     playerOnePosition = parseInt($currentPlayerPosition[0].id)
     // $currentPlayerPosition.removeClass('player')
     playerOnePosition = amountToMove + playerOnePosition
+    console.log(playerOnePosition)
 
     if (playerOnePosition === 14) {
       console.log(`player1 hit snakehead1 = ${playerOnePosition}`)
@@ -78,6 +80,9 @@ $(() => {
     if (playerOnePosition === 10) {
       console.log(`player at ladderbottom2 = ${playerOnePosition}`)
       playerOnePosition = 22
+    }
+    if (playerOnePosition >= 24) {
+      alert('Player One Wins')
     }
 
     $currentPlayerPosition.removeClass('player')
@@ -113,17 +118,14 @@ $(() => {
       console.log(`player2 at ladderbottom2 = ${playerTwoPosition}`)
       playerTwoPosition = 22
     }
+    if (playerTwoPosition >= 24) {
+      alert('Player Two Wins')
+    }
 
     $currentPlayerTwoPosition.removeClass('playerTwo')
     $($grid).eq(playerTwoPosition).addClass('playerTwo')
 
   })
 
-  // function declareWinner(winner, resetPlayerPosition){
-  //   if ($currentPlayerPosition || $currentPlayerTwoPosition >= 26) {
-  //     alert('Game over! Play again?')
-  //     let resetPlayerPosition = playerOnePosition && playerTwoPosition === 0
-  //   }
-  //   declareWinner(winner,)
-  // }
+
 })
