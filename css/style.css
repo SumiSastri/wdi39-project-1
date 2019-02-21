@@ -8,16 +8,16 @@ body{
   margin: 0;
   padding: 0;
 }
-.introduction{
-  height: 50px;
-  width:  850px;
-  margin: 10px 50px;
+
+main{
+  margin: 50px;
+
 }
 
 header{
-  display: flex;
-  margin: 10px;
-  height: 75px;
+display: flex;
+margin: 10px;
+align-items: center;
 }
 
 .headerimage1 {
@@ -30,49 +30,59 @@ header{
   width:  75px;
 }
 
-.playerdice1, .playerdice2, .playertwodice1, .playertwodice2{
-  margin:10px;
-  padding:25px;
+.uiux{
+  display: block;
   align-items: center;
-  height: 15px;
+  padding: 10px;
 }
 
 .playerButton {
   background-color: red;
+  width: 300px;
+  align-items: center;
 }
-#hidden {
-  /* visibility: hidden; */
-  background-color: black;
+
+.playertwoButton {
+  background-color: green;
+  width: 300px;
 }
+
+.playerdice1, .playerdice2, .playertwodice1, .playertwodice2{
+  margin:10px;
+  padding: 25px;
+}
+
+.reset{
+  height: 50px;
+  width: 100px;
+  margin: 15px;
+  background-color: pink;
+  font-weight: bold;
+  font-size: 12px;
+}
+
 h1{
   background: red;
   text-align: center;
   font-size: 25px;
-  margin: 20px;
+  margin: 5px;
   padding: 10px;
 }
 
 h2{
-  margin: 20px 15px;
   font-size: 18px;
 }
 
 p{
-  margin: 100px;
-  padding; 15px;
+  margin, padding: 50px;
   border: solid 2px grey;
   line-height: 2em;
+  width: 800px;
 }
 
 strong{
   padding: 2px;
   margin: 0 4px 0 0;
-}
-
-.uiux{
-  margin: 2px 75px;
-  padding: 2px;
-  align-items: center;
 }
 
 .gamegrid{
@@ -81,7 +91,6 @@ strong{
   border: dashed 4px red;
   display: flex;
   flex-wrap: wrap-reverse;
-  margin: 125px;
 }
 
 .box {
@@ -95,7 +104,7 @@ strong{
   transition-property: background;
   transition-duration: 0.9s;
   transition-timing-function: linear;
-  transition-delay: 0.9s;
+  transition-delay: 0.5s;
 }
 
 .playerTwo {
@@ -103,10 +112,10 @@ strong{
   transition-property: background;
   transition-duration: 0.9s;
   transition-timing-function: linear;
-  transition-delay: 0.9s;
+  transition-delay: 0.5s;
 }
 
-.playerTwo.player {
+.playerTwo.player{
   background: linear-gradient(red, green)
 }
 

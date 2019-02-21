@@ -15,6 +15,8 @@ $(() => {
 
 
   //create grid in jquery append to html
+
+
   function createGameboard() {
     for (let i = 0; i <= gridNumbers; i++){
       if(i === 0) {
