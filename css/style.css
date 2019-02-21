@@ -94,8 +94,12 @@ strong{
   background-color: red;
 }
 
-.playertwo {
+.playerTwo {
   background-color: green;
+}
+
+.playerTwo.player {
+  background: linear-gradient(red, green)
 }
 
 .snakehead1, .snakehead2 {

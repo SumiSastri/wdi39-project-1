@@ -7,27 +7,19 @@ $(() => {
   const gridNumbers = 24
   let playerOnePosition = 0
   let playerTwoPosition = 0
-  const $currentPlayerPosition = $('.currentPlayerPosition')
-  const $currentPlayerTwoPosition = $('.currentPlayerTwoPosition')
   const $playerDice1 = $('.playerdice1')
   const $playerDice2 = $('.playerdice2')
   const $playerTwoDice1 = $('.playertwodice1')
   const $playerTwoDice2 = $('.playertwodice2')
 
 
-  // function startPlay()
-  // const $playerIcon =$('.playerIcon') at zero
-  // const $computerIcon =$('.computericon') at zero
-  // both icons at zero (is this possible?)
-  // winner if icons greater or equal to 26
-
   //create grid in jquery append to html
   function createGameboard() {
     for (let i = 0; i <= gridNumbers; i++){
       if(i === 0) {
-        $gameGrid.append(`<div id="${i}" class="box player"></div>`)
+        $gameGrid.append(`<div id="${i}" class="box player playerTwo"></div>`)
       } else if(i === 1) {
-        $gameGrid.append(`<div id="${i}" class="box playertwo"></div>`)
+        $gameGrid.append(`<div id="${i}" class="box" data-id="1"></div>`)
       }else if(i === 14) {
         $gameGrid.append(`<div id="${i}" class="box snakehead1" data-id="14"></div>`)
       } else if(i === 23) {
@@ -59,7 +51,7 @@ $(() => {
   // connect dice to click and players
   $playerDice1.on('click', function() {
     const amountToMove = rollDice()
-    // console.log('this is rollDice', rollDice())
+    console.log('this is rollDice', rollDice())
     $playerDice2.html(amountToMove)
     const $currentPlayerPosition = $gameGrid.find('.player')
     console.log('player1 dice rolled', amountToMove)
@@ -97,8 +89,9 @@ $(() => {
     const amountToMove = rollDice()
     $playerTwoDice2.html(amountToMove)
     console.log('player2 dice rolled ', amountToMove)
-    const $currentPlayerTwoPosition = $gameGrid.find('.playertwo')
+    const $currentPlayerTwoPosition = $gameGrid.find('.playerTwo')
     playerTwoPosition = parseInt($currentPlayerTwoPosition[0].id)
+    // $currentPlayerTwoPosition.removeClass('playertwo')
     playerTwoPosition = amountToMove + playerTwoPosition
 
     if(playerTwoPosition === 14) {
@@ -117,22 +110,20 @@ $(() => {
     }
 
     if (playerTwoPosition === 10) {
-      console.log(`player2 cat ladderbottom2 = ${playerTwoPosition}`)
+      console.log(`player2 at ladderbottom2 = ${playerTwoPosition}`)
       playerTwoPosition = 22
     }
 
-    $currentPlayerTwoPosition.removeClass('playertwo')
-    $($grid).eq(playerTwoPosition).addClass('playertwo')
+    $currentPlayerTwoPosition.removeClass('playerTwo')
+    $($grid).eq(playerTwoPosition).addClass('playerTwo')
 
   })
 
-  // function declareWinner($currentPlayerPosition, $currentPlayerTwoPosition){
-  //   if ($currentPlayerPosition >= 26) {
-  //     alert('Player 1 wins, play again?')
-  //   } else ($currentPlayerTwoPosition >= 26)
-  //   alert('Player 2 wins, play again?')
+  // function declareWinner(winner, resetPlayerPosition){
+  //   if ($currentPlayerPosition || $currentPlayerTwoPosition >= 26) {
+  //     alert('Game over! Play again?')
+  //     let resetPlayerPosition = playerOnePosition && playerTwoPosition === 0
+  //   }
+  //   declareWinner(winner,)
   // }
-  //
-  // declareWinner()
-
 })
