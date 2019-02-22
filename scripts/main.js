@@ -77,12 +77,13 @@ $(() => {
     if (playerOnePosition === 2) {
       console.log(`player1 at ladderbottom1 = ${playerOnePosition}`)
       playerOnePosition = 8
-
     }
+
     if (playerOnePosition === 10) {
       console.log(`player at ladderbottom2 = ${playerOnePosition}`)
       playerOnePosition = 22
     }
+
     if (playerOnePosition >= 24) {
       alert('Player One Wins')
     }
