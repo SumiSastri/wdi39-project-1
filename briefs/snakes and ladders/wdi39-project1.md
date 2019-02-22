@@ -66,6 +66,15 @@ Scoreboard
 TECH SPEC
 
 DOM structure
+- Body object - removes browser defaults
+- Main object (wraps all content)
+- Header object with h1-tag and images - html & css
+- ui-ux object with buttons for initialisation
+   - html & css
+   - jquery and js embeds
+- game-grid object
+   - html, css, j-query and js
+   - key functions, arrays, methods embedded in game grid
 
 
 HTML build:
@@ -85,9 +94,7 @@ CSS ANIMATION:
 
 - PLAYER ICONS MOVING
 
-
-javascript & j-query (APPROACH):
-
+JS & J-QUERY: Steps, pseudo-code and code snippets
 
 1. Build game grid in j-query not HTML - this makes each div an object, defines
 zero as the starting point for the players and defines the exceptions
@@ -109,10 +116,7 @@ Code snippet:-
       }else if(i === 14) {
       $gameGrid.append(`<div id="${i}" class="box snakehead1" data-id="14"></div>`)
 
-
-
 2. Players roll dice - generate a random number between 1 and 6 and current player position identified as relative to start position on the array
-
 
 Code snippet:-
 
@@ -120,15 +124,12 @@ function rollDice(){
     return Math.ceil(Math.random() * 6)
   }
 
-
    $playerDice1.on('click', function() {
    const amountToMove = rollDice()
     $playerDice2.html(amountToMove)
     const $currentPlayerPosition = $gameGrid.find('.player')
     playerOnePosition = parseInt($currentPlayerPosition[0].id)
     playerOnePosition = amountToMove + playerOnePosition
-
-
 
 3. Move icon (different states)
 
@@ -146,9 +147,7 @@ if (playerOnePosition === 14) {
       playerOnePosition = 11
     }
 
-
 As this was the main functionality, the console logs are documented to show how the exception handling was tested
-
 
 5. Game end - winner declared
 
@@ -157,7 +156,6 @@ As this was the main functionality, the console logs are documented to show how 
    -  running score maintained (bonus)
    -  Best of three tries declares winner (bonus)
    -  Reset button to zero
-
 
 LEARNING OBJECTIVES AND CHALLENGES:
 
@@ -170,7 +168,6 @@ Areas that were researched were:-
 3) Data types - primitives, vs objects and constructors
 4) DOM and object-oriented programming
 
-
 Challenges:-
 
 1) Understanding the difference between CSS animation and j-query animation
@@ -178,9 +175,8 @@ Challenges:-
 3) Over-thinking and under-thinking striking a balance
 4) Using the console log as a guide without fear of breaking code that worked
 
-
 Areas that need more work:
 
 1) Would be useful to scale up the model from MVP to FWM
 2) Increase number of players using a constructor
-3) Create a better ui-ux
+3) Create a better ui-ux - the mvp there is a visual conflict between the objects in the snake-heads and the ladder-bottoms. When the icons land on these grid objects you can not see the movement - the js & j-query functions execute properly but you can not see (identify) the icons when they land on the snake head and ladder bottom, you see them only when they are in their new position. The game start-reset states have not been created - while the game functions the start-reset button will ensure a cleaner ui-ux.
