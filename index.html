@@ -6,39 +6,47 @@
   <title>Snakes & Ladders</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
   <script src="scripts/main.js" charset="utf-8"></script>
 </head>
 
 <body>
 
-<main>
-  <header>
-    <h1>Snakes & Ladders</h1>
-    <img src="Images/snake-2.png" class ='headerimage1' alt="picture of snake" />
-    <h2>Snakes and Ladders is a classic children's board game</h2>
-    <img src="Images/ladder-1.png" class ='headerimage2' alt="picture of snake" />
-  </header>
+  <main>
+    <header>
+      <h1>Snakes & Ladders</h1>
+      <img src="Images/snake-2.png" class='headerimage1' alt="picture of snake" />
+      <h2>Snakes and Ladders is a classic children's board game</h2>
+    </header>
 
-<div class="uiux">
-  <p><strong>Rules:</strong>Players roll a die to determine how many squares to move their token. The token moves from the bottom of the board to the top left to right, then right to left on the next row and so on, until they reach the last square at the top of the board.
-
-    If the player's token lands at the bottom of a ladder, they can move to the top of the ladder, advancing toward the goal. If the player's token lands at the head of a snake, they must move to the tail, distancing them further from the goal.
-
-    The player that reaches the last square first wins. <strong>Roll dice to play</strong></p>
-      <div class="playerButton">
-        <button type="button" name="button"class ="playerdice1">Player 1 click to roll dice</button>
-        <button type="button" name="button"class="playerdice2">0</button>
-      </div>
-      <div class="playertwoButton">
-        <button type="button" name="button"class ="playertwodice1">Player 2 click to roll dice</button>
-        <button type="button" name="button"class="playertwodice2">0</button>
-      </div>
+    <div class="rules-container">
+      <p> Based on an Indian board game of chance, snakes and ladders is a game for children to understand that life can be a game of chance. The ladders represent good luck and the snakes misfortune.
+        Each player chooses a colored token and clicks the button to roll the dice. Tokens move from the bottom of the board to the top representing the start and end of a phase in life.
+        If a token lands at the bottom of a ladder, good fortune speeds them to the top of the ladder. However, if it lands on a snake,
+        usually very close to a ladder, misfortune sends them back down the board. Just as in the game of life there are winners and losers, so too, the person who reaches the end of the board first wins the game. <h4>Start Playing</h4></p> 
     </div>
 
-    <div class="gamegrid">
+    <div class="gamegrid"></div>
+    <div class="player-buttons-container"> 
+        <div class="playerButton">
+          <button type="button" name="button" class="playerdice1">Player 1 click to roll dice</button>
+          <button type="button" name="button" class="playerdice2">0</button>
+        </div>
+        <div class="playertwoButton">
+          <button type="button" name="button" class="playertwodice1">Player 2 click to roll dice</button>
+          <button type="button" name="button" class="playertwodice2">0</button>
+        </div>
+        <div>
+          <button class="reset">Reset</button>
+        </div>
+      </div>
+ 
+  <div class="start-stop-container" id="start-stop-container">
+      <p>SELECT A COLOR AND ROLL DICE</p>
+      <p>CLICK RESET TO START A NEW GAME</p>
     </div>
-</main>
+  </main>
+</body>
 
-  </body>
-  </html>
+</html>

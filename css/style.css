@@ -1,147 +1,136 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
-body{
-  background-color: yellow;
-  display: flex;
-  margin: 0;
-  padding: 0;
+body {
+	background-color: yellow;
+	display: flex;
+	font-family: 'Open Sans Condensed', sans-serif;
 }
 
-main{
-  margin: 50px;
-
-}
-
-header{
-display: flex;
-margin: 10px;
-align-items: center;
+header {
+	display: flex;
+	margin: 10px;
+	align-items: center;
 }
 
 .headerimage1 {
-  height: 75px;
-  width:  75px;
-}
-
-.headerimage2 {
-  height: 75px;
-  width:  75px;
-}
-
-.uiux{
-  display: block;
-  align-items: center;
-  padding: 10px;
+	height: 50%;
+	width: auto;
 }
 
 .playerButton {
-  background-color: red;
-  width: 300px;
+	width: 90%;
+	height: auto;
 }
 
 .playertwoButton {
-  background-color: green;
-  width: 300px;
+	width: 90%;
+	height: auto;
 }
 
-.playerdice1, .playerdice2, .playertwodice1, .playertwodice2{
-  margin:10px;
-  padding: 25px;
+.player-buttons-container {
+	display: grid;
+	grid-template-columns: 25% 25% 50%;
 }
 
-.reset{
-  height: 50px;
-  width: 100px;
-  margin: 15px;
-  background-color: pink;
-  font-weight: bold;
-  font-size: 12px;
+.start-stop-container {
+	display: grid;
+	grid-template-columns: 50% 50%;
 }
 
-h1{
-  background: red;
-  text-align: center;
-  font-size: 25px;
-  margin: 5px;
-  padding: 10px;
+.playerdice1,
+.playerdice2,
+.playertwodice1,
+.playertwodice2 {
+	width: 50%;
+	height: auto;
 }
 
-h2{
-  font-size: 18px;
+h1 {
+	background: red;
+	text-align: center;
+	font-size: 25px;
+	margin: 5px;
+	padding: 10px;
 }
 
-p{
-  margin, padding: 50px;
-  border: solid 2px grey;
-  line-height: 2em;
-  width: 800px;
+h2 {
+	font-size: 18px;
 }
 
-strong{
-  padding: 2px;
-  margin: 0 4px 0 0;
+strong {
+	padding: 2px;
+	margin: 0 4px 0 0;
 }
 
-.gamegrid{
-  height: 800px;
-  width: 800px;
-  border: dashed 4px red;
-  display: flex;
-  flex-wrap: wrap-reverse;
+.gamegrid {
+	height: auto;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap-reverse;
 }
 
 .box {
-  width: 158px;
-  height: 158px;
-  border: 1px solid black;
+	width: 158px;
+	height: 158px;
+	border: 1px solid black;
 }
 
-.player {
-  background-color: red;
-  transition-property: background;
-  transition-duration: 0.9s;
-  transition-timing-function: linear;
-  transition-delay: 0.5s;
+.playerOne {
+	background-color: red;
+	transition-property: background;
+	transition-duration: 0.9s;
+	transition-timing-function: linear;
+	transition-delay: 0.5s;
 }
 
 .playerTwo {
-  background-color: green;
-  transition-property: background;
-  transition-duration: 0.9s;
-  transition-timing-function: linear;
-  transition-delay: 0.5s;
+	background-color: green;
+	transition-property: background;
+	transition-duration: 0.9s;
+	transition-timing-function: linear;
+	transition-delay: 0.5s;
 }
 
-.playerTwo.player{
-  background: linear-gradient(red, green)
+.playerTwo.playerOne {
+	background: linear-gradient(red, green);
 }
 
-.snakehead1, .snakehead2 {
-  background-image: url(../Images/snake-1.jpg);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+.laddertop1,
+.ladderbottom1 {
+	background-image: url(../Images/ladder-1.png);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
-.snaketail1, .snaketail2 {
-  background-image: url(../Images/snake-2.png);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+.ladderbottom2,
+.laddertop2 {
+	background-image: url(../Images/ladder-2.png);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.snakehead1,
+.snaketail1 {
+	background-image: url(../Images/snake-1.jpg);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
-.laddertop1, .laddertop2 {
-  background-image: url(../Images/ladder-1.png);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+.snakehead2,
+.snaketail2 {
+	background-image: url(../Images/snake-2.png);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
 }
-
-.ladderbottom1, .ladderbottom2 {
-  background-image: url(../Images/ladder-2.png);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+.reset {
+	width: 30%;
+	height: auto;
+	color: palegreen;
+	border: 2px solid palegreen;
+	margin: 10px;
 }
