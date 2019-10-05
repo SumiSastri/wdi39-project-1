@@ -11,6 +11,7 @@ $(() => {
 	const $playerDice2 = $('.playerdice2');
 	const $playerTwoDice1 = $('.playertwodice1');
 	const $playerTwoDice2 = $('.playertwodice2');
+	const $reset = $('.reset');
 
 	//create grid function use append() method to connect jquery to html
 	function createGameboard() {
@@ -118,6 +119,16 @@ $(() => {
 			alert('Player Two Wins');
 		}
 
+		$currentPlayerTwoPosition.removeClass('playerTwo');
+		$($grid).eq(playerTwoPosition).addClass('playerTwo');
+	});
+	$reset.on('click', function() {
+		let $currentPlayerOnePosition = $gameGrid.find('.playerOne');
+		playerOnePosition = 0;
+		$currentPlayerOnePosition.removeClass('playerOne');
+		$($grid).eq(playerTwoPosition).addClass('playerOne');
+		let $currentPlayerTwoPosition = $gameGrid.find('.playerTwo');
+		playerTwoPosition = 0;
 		$currentPlayerTwoPosition.removeClass('playerTwo');
 		$($grid).eq(playerTwoPosition).addClass('playerTwo');
 	});
