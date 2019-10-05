@@ -42,35 +42,26 @@ $(() => {
 		$grid = $('.box');
 	}
 	createGameboard();
-	// call function for board to render
 
-	// function returns math method to roll a random number between 1 and 6
 	function rollDice() {
 		return Math.ceil(Math.random() * 6);
 	}
 
-	// when player clicks move tile to equal the amount on the rolldice function
 	$playerDice1.on('click', function() {
 		const amountToMove = rollDice();
 		console.log('dice roll is', rollDice());
 		$playerDice2.html(amountToMove);
-		// call the same function as a param for player 2
 
-		const $currentPlayerPosition = $gameGrid.find('.playerOne');
 		// create a current player position use the find() method on the grid which is an array
+		const $currentPlayerPosition = $gameGrid.find('.playerOne');
 		console.log('player1 dice rolled', amountToMove);
-		// console.log('this is currentPlayerPosition', $currentPlayerPosition);
 		playerOnePosition = parseInt($currentPlayerPosition[0].id);
 		// $currentPlayerPosition.removeClass('player')
 		playerOnePosition = amountToMove + playerOnePosition;
-		// console.log(playerOnePosition);
-		// determine player 1 position - parseInt method changes grrid to a number
-		// since it is an array set the index to [0]
 
 		if (playerOnePosition === 14) {
 			console.log(`player1 hit snakehead1 = ${playerOnePosition}`);
 			playerOnePosition = 7;
-			// change the position of the player if snake head reached move to tail position
 		}
 
 		if (playerOnePosition === 23) {
@@ -81,7 +72,6 @@ $(() => {
 		if (playerOnePosition === 2) {
 			console.log(`player1 at ladderbottom1 = ${playerOnePosition}`);
 			playerOnePosition = 8;
-			// change the position of the player if they reached a ladder to the top of ladder
 		}
 
 		if (playerOnePosition === 10) {
@@ -89,7 +79,7 @@ $(() => {
 			playerOnePosition = 22;
 		}
 
-		if (playerOnePosition >= 24) {
+		if (playerOnePosition >= 27) {
 			alert('Player One Wins');
 		}
 
@@ -103,7 +93,6 @@ $(() => {
 		console.log('player2 dice rolled ', amountToMove);
 		const $currentPlayerTwoPosition = $gameGrid.find('.playerTwo');
 		playerTwoPosition = parseInt($currentPlayerTwoPosition[0].id);
-		// $currentPlayerTwoPosition.removeClass('playertwo')
 		playerTwoPosition = amountToMove + playerTwoPosition;
 
 		if (playerTwoPosition === 14) {
@@ -125,7 +114,7 @@ $(() => {
 			console.log(`player2 at ladderbottom2 = ${playerTwoPosition}`);
 			playerTwoPosition = 22;
 		}
-		if (playerTwoPosition >= 24) {
+		if (playerTwoPosition >= 27) {
 			alert('Player Two Wins');
 		}
 
